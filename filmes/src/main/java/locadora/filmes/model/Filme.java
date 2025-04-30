@@ -1,6 +1,7 @@
 package locadora.filmes.model;
 
 import jakarta.persistence.*;
+import locadora.filmes.DTO.EntradaDeDados;
 
 @Entity
 @Table(name = "filme")
@@ -14,10 +15,13 @@ public class Filme {
     private String genero;
     private String diretor;
 
-    public Filme(String titulo, String genero, String diretor) {
-        this.titulo = titulo;
-        this.genero = genero;
-        this.diretor = diretor;
+    public Filme(EntradaDeDados dados) {
+        this.titulo = dados.titulo();
+        this.genero = dados.genero();
+        this.diretor = dados.diretor();
+    }
+
+    public Filme() {
     }
 
     public long getId() {

@@ -1,6 +1,7 @@
 package locadora.filmes.controller;
 
 import locadora.filmes.DTO.EntradaDeDados;
+import locadora.filmes.model.Filme;
 import locadora.filmes.model.Locacao;
 import locadora.filmes.service.FilmeService;
 import locadora.filmes.service.LocacaoService;
@@ -15,12 +16,14 @@ import java.util.List;
 @RequestMapping("/locadora")
 public class Controller {
     @Autowired
-    FilmeService service;
+    FilmeService serviceFilme;
+
+    @Autowired
     LocacaoService serviceLocacao;
 
     @PostMapping
     public ResponseEntity<EntradaDeDados> post(@RequestBody EntradaDeDados dados){
-        EntradaDeDados filmeSalvo = service.inserirFilme(dados);
+        EntradaDeDados filmeSalvo = serviceFilme.inserirFilme(dados);
         return ResponseEntity.status(200).body(filmeSalvo);
     }
 
@@ -28,6 +31,12 @@ public class Controller {
     public ResponseEntity<List<Locacao>> get(){
         List<Locacao> locacao = serviceLocacao.listarLocacao();
         return ResponseEntity.status(200).body(locacao);
+    }
+
+    @GetMapping("/filme")
+    public ResponseEntity<List<Filme>> listarFilmes(){
+        List<Filme> filmes = serviceFilme.listarFilmes();
+        return ResponseEntity.status(200).body(filmes);
     }
 
 

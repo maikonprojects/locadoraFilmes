@@ -7,6 +7,8 @@ import locadora.filmes.repository.FilmeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FilmeService {
 
@@ -15,7 +17,7 @@ public class FilmeService {
 
     public EntradaDeDados inserirFilme(EntradaDeDados dados){
         try {
-            Filme filme = new Filme(dados.titulo(), dados.genero(), dados.diretor());
+            Filme filme = new Filme(dados);
             Filme filmeSalvo = repositorio.save(filme);
             return new EntradaDeDados(filmeSalvo.getTitulo(), filmeSalvo.getGenero(), filmeSalvo.getDiretor());
         } catch (RuntimeException se){
@@ -24,7 +26,7 @@ public class FilmeService {
     }
 
 
-
-
-
+    public List<Filme> listarFilmes() {
+        return repositorio.findAll();
+    }
 }
