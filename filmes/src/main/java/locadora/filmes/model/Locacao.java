@@ -12,7 +12,9 @@ public class Locacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @ManyToOne
     private Cliente cliente;
+    @ManyToOne
     private Filme filme;
     private LocalDate dataLocacao;
     private LocalDate dataDevolucao;
