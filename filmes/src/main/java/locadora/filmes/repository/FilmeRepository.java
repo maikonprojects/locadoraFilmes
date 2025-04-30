@@ -3,5 +3,5 @@ package locadora.filmes.repository;
 import locadora.filmes.model.Filme;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface LocadoraRepository extends JpaRepository<Filme, Integer> {
+public interface FilmeRepository extends JpaRepository<Filme, Integer> {
 }

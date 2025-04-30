@@ -2,15 +2,16 @@ package locadora.filmes.service;
 
 import locadora.filmes.DTO.EntradaDeDados;
 import locadora.filmes.model.Filme;
-import locadora.filmes.repository.LocadoraRepository;
+import locadora.filmes.model.Locacao;
+import locadora.filmes.repository.FilmeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LocadoraService {
+public class FilmeService {
 
     @Autowired
-    LocadoraRepository repositorio;
+    FilmeRepository repositorio;
 
     public EntradaDeDados inserirFilme(EntradaDeDados dados){
         try {
@@ -21,4 +22,9 @@ public class LocadoraService {
             throw new RuntimeException();
         }
     }
+
+
+
+
+
 }
