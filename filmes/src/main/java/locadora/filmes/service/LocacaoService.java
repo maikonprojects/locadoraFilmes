@@ -21,9 +21,12 @@ public class LocacaoService {
 
     public EntradaDadosLocacao inserirLocacao(EntradaDadosLocacao dados){
         try {
+
             Locacao locacao = new Locacao(dados);
             Locacao locacaoSalvo = repositorio.save(locacao);
             return new EntradaDadosLocacao(locacaoSalvo.getCliente(),locacaoSalvo.getFilme(),locacaoSalvo.getDataLocacao(),locacaoSalvo.getDataDevolucao(),locacaoSalvo.isDevolvido());
+
+
 
         } catch (RuntimeException se){
             throw new RuntimeException();

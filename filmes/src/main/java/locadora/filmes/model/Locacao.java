@@ -31,6 +31,10 @@ public class Locacao {
     public Locacao(EntradaDadosLocacao dados) {
     }
 
+    public Locacao() {
+
+    }
+
     public long getId() {
         return id;
     }
