@@ -15,6 +15,7 @@ public class Locacao {
 
     @ManyToOne
     private Cliente cliente;
+
     @ManyToOne
     private Filme filme;
     private LocalDate dataLocacao;

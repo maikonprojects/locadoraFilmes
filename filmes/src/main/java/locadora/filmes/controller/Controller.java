@@ -3,6 +3,7 @@ package locadora.filmes.controller;
 import locadora.filmes.DTO.EntradaDadosCliente;
 import locadora.filmes.DTO.EntradaDadosLocacao;
 import locadora.filmes.DTO.EntradaDeDados;
+import locadora.filmes.DTO.LocacaoCadastroDTO;
 import locadora.filmes.model.Cliente;
 import locadora.filmes.model.Filme;
 import locadora.filmes.model.Locacao;
@@ -41,10 +42,16 @@ public class Controller {
     }
 
     @PostMapping("/locacaoPost")
-    public ResponseEntity<EntradaDadosLocacao> postLocacao(@RequestBody EntradaDadosLocacao dadosLocacao){
-        EntradaDadosLocacao locacaoSalvo = serviceLocacao.inserirLocacao(dadosLocacao);
-        return ResponseEntity.status(200).body(locacaoSalvo);
+    public ResponseEntity postLocacao(@RequestBody LocacaoCadastroDTO dadosLocacao){
+        try {
+            EntradaDadosLocacao locacaoSalvo = serviceLocacao.inserirLocacao(dadosLocacao);
+            return ResponseEntity.status(200).body(locacaoSalvo);
+        }catch (RuntimeException e){
+            return ResponseEntity.status(409).body(e.getMessage());
+        }
+
     }
+
 
     @PutMapping("/{id}/devolucao")
     public ResponseEntity<Locacao> devolverLocacao(@PathVariable Long id){

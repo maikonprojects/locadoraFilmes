@@ -2,8 +2,11 @@ package locadora.filmes.service;
 
 import locadora.filmes.DTO.EntradaDadosLocacao;
 import locadora.filmes.DTO.EntradaDeDados;
+import locadora.filmes.DTO.LocacaoCadastroDTO;
 import locadora.filmes.model.Filme;
 import locadora.filmes.model.Locacao;
+import locadora.filmes.repository.ClienteRepository;
+import locadora.filmes.repository.FilmeRepository;
 import locadora.filmes.repository.LocacaoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,19 +22,22 @@ public class LocacaoService {
     @Autowired
     LocacaoRepositorio repositorio;
 
-    public EntradaDadosLocacao inserirLocacao(EntradaDadosLocacao dados){
-        try {
+    @Autowired
+    ClienteRepository clienteRepository;
 
-            Locacao locacao = new Locacao(dados);
-            Locacao locacaoSalvo = repositorio.save(locacao);
-            return new EntradaDadosLocacao(locacaoSalvo.getCliente(),locacaoSalvo.getFilme(),locacaoSalvo.getDataLocacao(),locacaoSalvo.getDataDevolucao(),locacaoSalvo.isDevolvido());
+    @Autowired
+    FilmeRepository filmeRepository;
+
+   // public EntradaDadosLocacao inserirLocacao(LocacaoCadastroDTO dados){
+    //    var cliente = clienteRepository.findByNome(dados.nomeCliente());
+    //    var filme = filmeRepository.findByTitulo(dados.titulo());
+          //  Locacao locacao = new Locacao(dados);
+          // Locacao locacaoSalvo = repositorio.save(locacao);
+         //   return new EntradaDadosLocacao(locacaoSalvo.getCliente(),locacaoSalvo.getFilme(),locacaoSalvo.getDataLocacao(),locacaoSalvo.getDataDevolucao(),locacaoSalvo.isDevolvido());
 
 
 
-        } catch (RuntimeException se){
-            throw new RuntimeException();
-        }
-    }
+    //}
 
     public Locacao devolverFilme(Long id) {
         Locacao locacao = repositorio.findById(id)
