@@ -1,6 +1,7 @@
 package locadora.filmes.model;
 
 import jakarta.persistence.*;
+import locadora.filmes.DTO.EntradaDadosLocacao;
 
 import java.time.LocalDate;
 
@@ -20,12 +21,14 @@ public class Locacao {
     private LocalDate dataDevolucao;
     private boolean devolvido;
 
-    public Locacao(Cliente cliente, Filme filme, LocalDate dataLocacao, LocalDate dataDevolucao, boolean devolvido) {
+    public Locacao(Cliente cliente, Filme filme) {
         this.cliente = cliente;
         this.filme = filme;
-        this.dataLocacao = dataLocacao;
-        this.dataDevolucao = dataDevolucao;
-        this.devolvido = devolvido;
+        this.dataLocacao = LocalDate.now();
+        this.devolvido = false;
+    }
+
+    public Locacao(EntradaDadosLocacao dados) {
     }
 
     public long getId() {
@@ -75,4 +78,5 @@ public class Locacao {
     public void setDevolvido(boolean devolvido) {
         this.devolvido = devolvido;
     }
+
 }

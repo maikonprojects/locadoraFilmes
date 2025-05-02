@@ -1,6 +1,7 @@
 package locadora.filmes.model;
 
 import jakarta.persistence.*;
+import locadora.filmes.DTO.EntradaDadosCliente;
 
 @Entity
 @Table(name = "cliente")
@@ -16,6 +17,9 @@ public class Cliente {
     public Cliente(String nome, String email) {
         this.nome = nome;
         this.email = email;
+    }
+
+    public Cliente(EntradaDadosCliente dados) {
     }
 
     public long getId() {
