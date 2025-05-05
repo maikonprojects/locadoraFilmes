@@ -29,7 +29,7 @@ public class Controller {
     @Autowired
     ClienteService serviceCliente;
 
-    @PostMapping
+    @PostMapping("/filmePost")
     public ResponseEntity<EntradaDeDados> post(@RequestBody EntradaDeDados dados){
         EntradaDeDados filmeSalvo = serviceFilme.inserirFilme(dados);
         return ResponseEntity.status(200).body(filmeSalvo);
@@ -42,7 +42,7 @@ public class Controller {
     }
 
     @PostMapping("/locacaoPost")
-    public ResponseEntity postLocacao(@RequestBody LocacaoCadastroDTO dadosLocacao){
+    public ResponseEntity postLocacao(@RequestBody EntradaDadosLocacao dadosLocacao){
         try {
             EntradaDadosLocacao locacaoSalvo = serviceLocacao.inserirLocacao(dadosLocacao);
             return ResponseEntity.status(200).body(locacaoSalvo);

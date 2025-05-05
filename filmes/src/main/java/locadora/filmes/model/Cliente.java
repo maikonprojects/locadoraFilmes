@@ -20,6 +20,11 @@ public class Cliente {
     }
 
     public Cliente(EntradaDadosCliente dados) {
+        this.nome = dados.nome();
+        this.email = dados.email();
+    }
+
+    public Cliente() {
     }
 
     public long getId() {

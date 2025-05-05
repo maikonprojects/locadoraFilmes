@@ -27,9 +27,15 @@ public class Locacao {
         this.filme = filme;
         this.dataLocacao = LocalDate.now();
         this.devolvido = false;
+        this.dataDevolucao = LocalDate.now().plusDays(7);
     }
 
     public Locacao(EntradaDadosLocacao dados) {
+        this.cliente = dados.cliente();
+        this.filme = dados.filme();
+        this.dataLocacao = LocalDate.now();
+        this.devolvido = false;
+
     }
 
     public Locacao() {
